@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://serpapi.com/search.json?engine=google_scholar_author&author_id=k-qjL5cAAAAJ&api_key=bdeab1a17c86da90b26ec5a00541539abcdf999f343574f4b353da7f1803f05a')}`)
         .then(response => response.json())
         .then(data => {
-            const articles = data.articles || [];
+            const articles = JSON.parse(data.contents).articles || [];
             const articlesContainer = document.getElementById('articles');
 
             if (articles.length > 0) {
